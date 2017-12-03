@@ -42,6 +42,10 @@
     <listener-class>slowalker.listener.AppListener</listener-class>
   </listener>
 
+  <listener>
+    <listener-class>slowalker.listener.SessionListener</listener-class>
+  </listener>
+
  
 
 </web-app>
