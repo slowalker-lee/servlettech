@@ -1,0 +1,52 @@
+servlet的两个高级特性（JSP不可以完成的工作）：filter Listener
+  filter用于在servlet之外对request、response进行修改。
+  一个filter chain包含多个filter，
+      request在到达servlet之前会先经过FilterChain中所有filter。 
+      Response在从servlet抵达客户端之前先经过FilterChain中所有Filter。
+  
+
+  Filter实现：实现javax.servlet.Filter接口。
+  Filter生命周期：在Filter接口中有三个方法
+    1.public void init(FilterConfig config) throws ServletException;
+       WEB程序启动时调用该方法，用于初始化该Filter。
+       参数FilterConfig config中包含初始化参数以及ServletContext信息。
+       只会在WEB程序加载时调用一次。
+     
+    2.public void doFilter(ServletRequest request, ServletResponse reponse,
+            FilterChain chain) throws ServletException, IOException;
+        客户请求服务器会经过此方法。
+        request参数为客户请求
+        Response参数为服务器响应
+        chain为滤镜链，通过chain.doFilter(request, response) 将请求传递给下一个Filter
+        或Servlet。
+
+    3.public void destroy();
+        WEB程序关闭时调用此方法， 用于销毁一些资源。只会在WEB程序卸载时调用一次。
+
+    Filter配置
+    web.xml:
+      <filter>
+        <filter-name>filtername<filter-name>
+        <filter-class>filter.Class<filter-class>
+        <init-param>
+          <param-name>paramName</param-name>
+          <param-value>paramValue</param-value>
+        </init-param>
+      </filter>
+
+      <filter-mapping>                            声明在什么条件下该filter生效
+        <filter-name>filtername</filter-name>     与上文中name必须相同
+        <url-pattern>/jsp/*</url-pattern>         满足在jsp路径下的路径中的文件生效
+        <url-pattern>/*.do</url-pattern>          满足在该路径下以do结尾的文件
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+      </filter-mapping>
+
+
+      dispatcher配置详解：
+          1.REQUEST：表示仅当直接请求servlet时才生效
+          2.FORWARD：表示仅当servlet通过FORWARD到该servlet才生效
+          3.INCLUDE：尽在JSP中以<jsp:include />请求该servlet时才生效
+          4.ERROR：尽在JSP中以<%@ errorPage=...jsp%>请求该servlet才生效。
+
+      dispatcher与URL-pattern之间是且的关系，同时满足才生效。

@@ -1,0 +1,17 @@
+1.会话跟踪技术有四种方式
+    1.URL重写（将信息写入url中，以get方法访问）
+    2.hidden table（将信息写入表单中，即写入请求体中，可以在post方法中获取）
+    3.cookie （将信息保存在一个cookie中，发送至客户端保存）
+    4.session （将信息写入服务器内存中）
+
+2.cookie技术
+    HTTP作为无状态协议，服务器无法区分用户，所以每次请求时携带可以证明身份的cookie，
+      使服务器可以区分不同的用户。
+    cookie 在Java中为 javax.servlet.http.Cookie类的一个实例。
+    cookie可以理解为一个键值对，由key-value组成。一个cookie保存一个键值对，一个Request和
+       Response有一组cookie。
+    示例：jsps/login.jsp  jsps/cookie.jsp  用户登录次数计数器
+
+    cookie的不可跨域名性.不同域名之间不共享cookie，包括一级二级之间。
+
+    cookie的有效期可以通过cookie.setMaxAge(int number);设置在多少秒后失效.

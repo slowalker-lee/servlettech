@@ -6,8 +6,6 @@
     if("POST".equals(request.getMethod())){
         Cookie usernameCookie = new Cookie("username", request.getParameter("username"));
         Cookie visitTimeCookie = new Cookie("visitTime", "000");
-        username.setMaxAge(7*24*3600);
-        visitTimeCookie.setMaxAge(7*24*3600);
         response.addCookie(usernameCookie);
         response.addCookie(visitTimeCookie);
         response.sendRedirect("cookie.jsp");
