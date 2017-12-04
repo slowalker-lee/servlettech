@@ -1,0 +1,54 @@
+servlet:java服务器小程序，由服务端调用并执行。
+
+servlet生命周期：
+    1.装载servlet
+    2.创建servlet实例
+    3.初始化 调用servlet的init()方法
+    4.服务 调用servlet的service()方法。(doGet、doPost方法均定义在其中)
+    5.销毁 调用servlet的destroy()方法。
+
+servlet常用接口：
+    1.servlet的实现相关。(定义了用于实现servlet相关的类和方法)
+        1)public interface Servlet();
+          该方法是所有servlet必须直接或间接实现的接口。
+          该方法中定义了五个方法。
+            //初始化servlet
+            void init(ServletConfig config) throws ServletException;
+            //servlet相关的配置信息及初始化参数
+            ServletConfig getServletConfig();
+            //运行应用程序逻辑的入口点
+            void service(ServletRequest req,ServletResponse res)
+                throws ServletException,IOException;
+            //servlet信息，比如作者、版本、版权
+            String getServletInfo();
+            //销毁servlet
+            void destroy();
+        2)GenericServlet
+        3)public abstract class HttpServlet extends GenericServlet;
+            doGet,doPost等服务方法
+            init(),destroy() 如果需要管理servlet生命周期内所持有资源，可以重写这两个方法。
+
+
+    2.servlet配置相关。(主要包括ServletConfig接口)
+        一个servlet的配置信息
+          <servlet>
+            <servlet-name>EmployeeServlet</servlet-name>
+            <servlet-class>slowalker.jspservlet.EmployeeServlet</servlet-class>
+            <init-param>
+              <param-name>param1</param-name>
+              <param-value>value1</param-value>
+            </init-param>
+          </servlet>
+        getInitParameter(String name);//返回指定初始化参数的值
+        getInitParameterNames(); //返回所有初始化参数的名称
+        getServletContext(); //返回servlet的上下文对象的引用
+
+    3.servlet异常相关。(ServletException和UnavailableException)
+        getRootCause(); //返回造成该ServletException的原因
+
+    4.请求和响应相关。
+    5.会话跟踪。
+    6.servlet上下文。(ServletContext可以在多个应用程序中共享数据)
+    7.servlet协作。 (主要是RequestDispatcher接口，用于视图派发)
+    8.过滤。(定义了请求响应过滤的相关API和接口)
+    9.其他类。(Cookie、HttpUtils)

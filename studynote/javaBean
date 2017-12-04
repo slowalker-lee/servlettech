@@ -1,0 +1,20 @@
+javaBean：是描述java的组件模型，通常封装程序页面逻辑，增加复用性。
+
+JavaBean特性：
+    1.实现代码重复利用。
+    2.易维护，易使用，易编写。
+    3.可以在支持JAVA的任何平台上工作，只需编译一次。
+    4.可以在内部网和网络之间传输。
+    5.可以以其他部件的模式进行工作。
+
+JAVABean的属性：
+    1.Simple ：拥有getter、setter
+    2.Indexed：
+    3.Bound
+    4.Constrained
+
+javaBean：可以用在jsp页面中
+    <jsp:useBean id="instanceName" scope="page|request|session|context" class="package.Class">
+        <jsp:setProperty name="instanceName" property="*"/>  
+        <!--从表单中自动填值，表单中的name和Bean中属性名需要对应-->
+    </jsp:useBean>

@@ -38,6 +38,16 @@
     <url-pattern>/employeeservlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ServletContextValue</servlet-name>
+    <servlet-class>slowalker.ServletContextValue</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextValue</servlet-name>
+    <url-pattern>/scv</url-pattern>
+  </servlet-mapping>
+  
+  
   <listener>
     <listener-class>slowalker.listener.AppListener</listener-class>
   </listener>
@@ -45,6 +55,11 @@
   <listener>
     <listener-class>slowalker.listener.SessionListener</listener-class>
   </listener>
+
+  <listener>
+    <listener-class>slowalker.listener.MyServletContextListener</listener-class>
+  </listener>
+
 
   <filter>
     <filter-name>ImageRedirectFilter</filter-name>

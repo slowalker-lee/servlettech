@@ -1,3 +1,0 @@
-Sun Dec 03 21:31:40 CST 2017 URI:/servlettech/
-Sun Dec 03 21:31:42 CST 2017 URI:/servlettech/jsps/
-Sun Dec 03 21:31:43 CST 2017 URI:/servlettech/jsps/session.jsp
