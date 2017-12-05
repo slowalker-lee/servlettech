@@ -57,10 +57,14 @@
   </listener>
 
   <listener>
+    <listener-class>slowalker.listener.MySessionListener</listener-class>
+  </listener>
+
+  <listener>
     <listener-class>slowalker.listener.MyServletContextListener</listener-class>
   </listener>
 
-
+  <!--
   <filter>
     <filter-name>ImageRedirectFilter</filter-name>
     <filter-class>slowalker.filter.ImageRedirectFilter</filter-class>
@@ -95,5 +99,5 @@
     <filter-name>LoggingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
+-->
 </web-app>

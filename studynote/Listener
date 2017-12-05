@@ -1,0 +1,11 @@
+监听器
+  1.ServletContext监听
+  2.ServletSession监听
+  3.ServletRequest监听
+
+要实现某个对象的监听，需要实现指定对象的Listener接口
+所有的监听都基于事件，是一种触发器，发生了什么什么事，侦测到后执行某一动作。
+
+1.ServletContext被创建、删除、ServletContextAttribute的增加、修改、删除等。
+    如例程/WEB-INF/classes/listener/MyServletContextListener类所示
+
